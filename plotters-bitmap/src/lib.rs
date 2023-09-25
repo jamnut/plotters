@@ -18,5 +18,5 @@ pub use bitmap::BitMapBackend;
 pub use error::BitMapBackendError;
 
 /*pub mod bitmap_pixel {
-    pub use super::bitmap::{BGRXPixel, RGBPixel};
+    pub use super::bitmap::{BGRXPixel, RGBPixel, RGBXPixel};
 }*/

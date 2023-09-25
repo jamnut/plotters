@@ -908,7 +908,7 @@ pub mod backend {
     pub use plotters_backend::DrawingBackend;
     #[cfg(feature = "bitmap_backend")]
     pub use plotters_bitmap::{
-        bitmap_pixel::{BGRXPixel, PixelFormat, RGBPixel},
+        bitmap_pixel::{BGRXPixel, PixelFormat, RGBPixel, RGBXPixel},
         BitMapBackend,
     };
     #[cfg(feature = "svg_backend")]

@@ -14,6 +14,7 @@ use plotters_bitmap::bitmap_pixel::{PixelFormat, RGBPixel};
     feature = "image"
 ))]
 use plotters_bitmap::bitmap_pixel::BGRXPixel;
+use plotters_bitmap::bitmap_pixel::RGBXPixel;
 
 use plotters_bitmap::BitMapBackend;
 
@@ -192,6 +193,19 @@ impl<'a, Coord> From<(Coord, DynamicImage)> for BitMapElement<'a, Coord, RGBPixe
     feature = "image"
 ))]
 impl<'a, Coord> From<(Coord, DynamicImage)> for BitMapElement<'a, Coord, BGRXPixel> {
+    fn from((pos, image): (Coord, DynamicImage)) -> Self {
+        let (w, h) = image.dimensions();
+        let rgb_image = image.to_rgb8().into_raw();
+        Self {
+            pos,
+            image: Buffer::Owned(rgb_image),
+            size: (w, h),
+            phantom: PhantomData,
+        }
+    }
+}
+
+impl<'a, Coord> From<(Coord, DynamicImage)> for BitMapElement<'a, Coord, RGBXPixel> {
     fn from((pos, image): (Coord, DynamicImage)) -> Self {
         let (w, h) = image.dimensions();
         let rgb_image = image.to_rgb8().into_raw();
