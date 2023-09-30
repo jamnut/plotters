@@ -194,7 +194,7 @@ impl PixelFormat for RGBXPixel {
                         let ptr = p as *mut [u8; 8] as *mut u64;
                         unsafe {
                             let d: u64 = std::mem::transmute([
-                                b, g, r, 0, b, g, r, 0, // QW1
+                                b, g, r, 255, b, g, r, 255, // QW1
                             ]);
                             ptr.write_unaligned(d);
                         }
